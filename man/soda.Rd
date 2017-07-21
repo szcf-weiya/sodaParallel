@@ -8,7 +8,7 @@ SODA algorithm for variable and interaction selection
 SODA is a forward-backward variable and interaction selection algorithm under logistic regression model with second-order terms.  In the forward stage, a stepwise procedure is conducted to screen for important predictors with both main and interaction effects, and in the backward stage SODA remove insignificant terms so as to optimize the extended BIC (EBIC) criterion.  SODA is applicable for variable selection for logistic regression, linear/quadratic discriminant analysis and other discriminant analysis with generative model being in exponential family.
 }
 \usage{
-soda(xx, yy, norm = F, debug = F, gam = 0, minF = 3, main_effects_only = F)
+soda(xx, yy, norm = F, debug = F, gam = 0, minF = 3, main_effects_only = F, ncl = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -38,6 +38,9 @@ Minimum number of steps in forward interaction screening. Default is minF=3.
 }
   \item{main_effects_only}{
 Select only main effect terms. Default is main_effects_only=F.
+}
+\item{ncl}{
+The cluster number used.
 }
 }
 \value{

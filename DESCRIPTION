@@ -2,6 +2,7 @@ Package: sodaParallel
 Type: Package
 Title: Implement soda in parallel. (Title Case)
 Version: 0.1.0
+Depends: R (>= 3.0.0), nnet, MASS, mvtnorm, doParallel, foreach, parallel
 Author: weiya 
 Maintainer: weiya <szcfweiya@gmail.com>
 Description: More about what it does (maybe more than one line)

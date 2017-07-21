@@ -1,4 +1,4 @@
-library(earth)
+#library(earth)
 library(MASS)
 #source("pure_soda.R")
 #source("pure_soda_par.R")
@@ -98,7 +98,7 @@ example <- function(df, which.example)
 
 # pure_soda_ml
 #simSODA <- function(n, which.example, method = "logit")
-simSODA <- function(n, which.example)
+simSODA <- function(n, which.example, ncl = 1)
 {
   # generate datasets
   tmp = genDataset(n)
@@ -111,7 +111,7 @@ simSODA <- function(n, which.example)
     X = cbind(X, example(df, which.example)) # example 2
   }
   colnames(X) = paste0('X', c(1:50))
-  res = soda(X, trueclass, norm = F, main_effects_only = F, minF = 3)
+  res = soda(X, trueclass, norm = F, main_effects_only = F, minF = 3, ncl = ncl)
   true_item = c("1", "1*1", "1*2", "2*3", "3*3")
   pred_item = res$best_Term
   MFP = 0

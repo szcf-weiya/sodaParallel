@@ -1,5 +1,7 @@
 library(nnet)
-
+library(parallel)
+library(doParallel)
+library(foreach)
 # create predictor matrix from terms
 create_pmatrix_from_terms = function(xx, terms)
 {
@@ -310,12 +312,8 @@ nqnorm = function(data)
 #  minF: minimum number of forward steps
 #  main_effects_only: select only main effect terms
 #
-soda = function(xx, yy, norm=F, debug=F, gam=0, minF=3, main_effects_only=F)
+soda = function(xx, yy, norm=F, debug=F, gam=0, minF=3, main_effects_only=F, ncl = 1)
 {
-  library(doParallel)
-  library(foreach)
-  ncl = 4
-
   K = max(yy);
   N = dim(xx)[1];
   D = dim(xx)[2];
@@ -746,7 +744,7 @@ s_soda = function(x, y, H=5, gam=0, minF=3, norm=F, debug=F)
     res$int_u[i] = yy[to];
   }
 
-  res_SODA = soda(x, res$S, gam=gam, minF=minF);
+  res_SODA = soda(x, res$S, gam=gam, minF=minF, ncl = 4);
 
   res$BIC       = res_SODA$BIC;
   res$Var       = res_SODA$Var;
